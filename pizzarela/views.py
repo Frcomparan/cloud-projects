@@ -114,31 +114,47 @@ def products_delete(request, id):
 
 def orders(request):
   if request.method == 'POST':
-    form = create_order(request.POST)
-    if form.is_valid():
+    print(f'\n\n\n\n {request.POST} \n\n\n\n')
+    for i in range(0,len(request.POST['order'])):
+      print(i)
+      form = create_order(request.POST['quantity'][i], request.POST['product'][i], request.POST['order'] )
+      print(request.POST['product'][i], request.POST['quantity'][i],f'\n\n\n\n  \n\n\n')
 
-      form.save()
-      return redirect('orders-show')
-    else:
-      context = {
-        'errors':form.errors,
-        'categories': Category.objects.all()
-      }
-      return render(request, 'orders/create_order.html', context)
+      if form.is_valid():
+        form.save()
+    return redirect('orders-show')      
+    # else:
+    #   context = {
+    #     'errors':form.errors,
+    #     'categories': Category.objects.all()
+    #   }
+    #   return render(request, 'orders/create_order.html', context)
 
   orders = Order.objects.all()
+  order_items = OrderItem.objects.all()
   template = 'orders/show_order.html'
   context = {
+    'order_items': order_items,
     'orders':orders,
   }
 
   return render(request, template, context)
 
 def orders_new(request):
+  # <QueryDict: 
+  # {
+  #   'csrfmiddlewaretoken': ['UqGMDqv9QejtUea0xx6WFTzyj8Zn3e9prYh87SMLShGbrl83zQNLSMCGlr5JDjgs'], 
+  #   'id_product': ['2', '2', '3', '3'], 
+  #   'quantity': ['2', '2', '2', '2']
+  # }
+  print(f'\n\n\n\n\n\n {request.POST} \n\n\n\n\n\n')
+  order = Order.objects.create()
+  print(f'\n\n\n\n\n\n {order} \n\n\n\n\n\n')
   products = Product.objects.all()
   template = 'orders/create_order.html'
   context = {
-    'products': products
+    'order':order,
+    'products': products,
   }
 
   return render(request, template, context)

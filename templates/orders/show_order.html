@@ -16,6 +16,13 @@
         <td><button id="{{order.id}}" onclick="location.href='/orders/{{order.id}}/delete'">eliminar</button></td>
       </tr>
     {% endfor %}
+    {% for item in order_items %}       
+      <p>{{item.order.id}}</p>
+      <p>{{item.product.name}}</p>
+      <p>{{item.quantity}}</p>
+    {% endfor %}
+
+
   </table>
 
 {% endblock content %}

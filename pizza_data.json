@@ -1,0 +1,107 @@
+[
+  {
+    "model": "pizzarela.category", 
+    "fields": {
+      "name": "Bebidas", 
+      "description": "Bebidas disponibles"
+    }
+  },
+  {
+    "model": "pizzarela.category", 
+    "fields": {
+      "name": "Comidas", 
+      "description": "Platillos extras complementarios a las pizzas"
+    }
+  },
+  {
+    "model": "pizzarela.category", 
+    "fields": {
+      "name": "Complementos", 
+      "description": "Acompañamientos para pizzas o comidas"
+    }
+  },
+  {
+    "model": "pizzarela.product", 
+    "fields": {
+      "name": "Pizza 2 ingredientes", 
+      "price": "120.000",
+      "category": 2
+    }
+  },
+  {
+    "model": "pizzarela.product", 
+    "fields": {
+      "name": "Pizza carnivora", 
+      "price": "200.000",
+      "category": 2
+    }
+  },
+  {
+    "model": "pizzarela.product", 
+    "fields": {
+      "name": "Pizza 3 ingredientes", 
+      "price": "180.000",
+      "category": 2
+    }
+  },
+  {
+    "model": "pizzarela.product", 
+    "fields": {
+      "name": "Pizza 4 quesos", 
+      "price": "200.000",
+      "category": 2
+    }
+  },
+  {
+    "model": "pizzarela.product", 
+    "fields": {
+      "name": "Refresco 600ml", 
+      "price": "12.000", 
+      "stock": 10, 
+      "category": 3
+    }
+  },
+  {
+    "model": "pizzarela.product", 
+    "fields": {
+      "name": "Refreco 1l", 
+      "price": "25.000", 
+      "stock": 10, 
+      "category": 3
+    }
+  },
+  {
+    "model": "pizzarela.product", 
+    "fields": {
+      "name": "Agua 1l", 
+      "price": "18.000", 
+      "stock": 18, 
+      "category": 3
+    }
+  },
+  {
+    "model": "pizzarela.product", 
+    "fields": {
+      "name": "Deep de Ranch", 
+      "price": "18.000", 
+      "stock": 18, 
+      "category": 5
+    }
+  },
+  {
+    "model": "pizzarela.product", 
+    "fields": {
+      "name": "Ingrediente extra", 
+      "price": "10.000",
+      "category": 5
+    }
+  },
+  {
+    "model": "pizzarela.product", 
+    "fields": {
+      "name": "Papas fritas", 
+      "price": "10.000",
+      "category": 5
+    }
+  }
+]

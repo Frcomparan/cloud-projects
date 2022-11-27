@@ -1,7 +1,7 @@
 [
   {
     "model": "bookstore.book", 
-    "pk": 6, "fields": {
+    "fields": {
       "title": "Harry Potter", 
       "description": "Some default description for this beatiful book", 
       "author": "J.K. Rowling ", 
@@ -11,7 +11,7 @@
   },
   {
     "model": "bookstore.book", 
-    "pk": 7, "fields": {
+    "fields": {
       "title": "Lord of the Rings", 
       "description": "Some default description for this beatiful book", 
       "author": "J. R. R. Tolkien", 
@@ -21,7 +21,7 @@
   },
   {
     "model": "bookstore.book", 
-    "pk": 8, "fields": {
+    "fields": {
       "title": "Game of Thrones", 
       "description": "Some default description for this beatiful book", 
       "author": "Gorge R.R. Martin", 
@@ -31,7 +31,7 @@
   },
   {
     "model": "bookstore.book", 
-    "pk": 9, "fields": {
+    "fields": {
       "title": "Fire and Blood", 
       "description": "Some default description for this beatiful book", 
       "author": "Gorge R.R. Martin", 
@@ -41,7 +41,7 @@
   },
   {
     "model": "bookstore.book", 
-    "pk": 3, "fields": {
+    "fields": {
       "title": "Life 3.0", 
       "description": "Some default description for this beatiful book", 
       "author": "Max Tegmark", 
@@ -51,7 +51,7 @@
   },
   {
     "model": "bookstore.book", 
-    "pk": 10, "fields": {
+    "fields": {
       "title": "It", 
       "description": "Some default description for this beatiful book", 
       "author": "Stephen King", 
@@ -61,7 +61,7 @@
   },
   {
     "model": "bookstore.book", 
-    "pk": 11, "fields": {
+    "fields": {
       "title": "Pet Sematary", 
       "description": "Some default description for this beatiful book", 
       "author": "Stephen King", 
@@ -71,7 +71,7 @@
   },
   {
     "model": "bookstore.book", 
-    "pk": 12, "fields": {
+    "fields": {
       "title": "The Shining", 
       "description": "Some default description for this beatiful book", 
       "author": "Stephen King", 
@@ -81,7 +81,7 @@
   },
   {
     "model": "bookstore.book", 
-    "pk": 13, "fields": {
+    "fields": {
       "title": "The Outsider", 
       "description": "Some default description for this beatiful book", 
       "author": "Stephen King", 

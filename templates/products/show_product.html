@@ -14,7 +14,13 @@
       <tr>
         <td>{{product.name}}</td>
         <td>{{product.price}}</td>
-        <td>{{product.stock}}</td>
+        <td>
+          {% if product.stock %}
+            {{product.stock}} 
+          {% else %}
+            No aplica
+          {% endif %}
+        </td>
         <td>{{product.category.name}}</td>
         <td><button id="{{product.id}}" onclick="location.href='/products/{{product.id}}/edit'">actualizar</button></td>
         <td><button id="{{product.id}}" onclick="location.href='/products/{{product.id}}/delete'">eliminar</button></td>

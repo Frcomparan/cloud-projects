@@ -16,7 +16,7 @@ def books(request):
     if form.is_valid():
 
       form.save()
-      return redirect('show')
+      return redirect('books-show')
     else:
       return render(request, 'create_book.html', { 'form':form })
 
@@ -43,7 +43,7 @@ def books_edit(request, id):
       form = create_book(request.POST or None, instance=book)
       if form.is_valid():
         form.save()
-        return redirect('show')
+        return redirect('books-show')
   
   form = create_book(instance=book)
   template = 'update_book.html'
@@ -56,7 +56,7 @@ def books_edit(request, id):
 def books_delete(request, id):
   book = Book.objects.get(id=id)
   book.delete()
-  return redirect(reverse('show'))
+  return redirect(reverse('books-show'))
 
 def borrows(request):
   if request.method == 'POST':
@@ -64,7 +64,7 @@ def borrows(request):
     if form.is_valid():
 
       form.save()
-      return redirect('show')
+      return redirect('borrows-show')
     else:
       return render(request, 'create_borrow.html', { 'form':form })
 
@@ -93,7 +93,7 @@ def borrows_edit(request, id):
       form = update_borrow(request.POST or None, instance=borrow)
       if form.is_valid():
         form.save()
-        return redirect('show')
+        return redirect('borrows-show')
   
   form = update_borrow(instance=borrow)
   template = 'update_borrow.html'
@@ -106,4 +106,4 @@ def borrows_edit(request, id):
 def borrows_delete(request, id):
   borrow = Borrow.objects.get(id=id)
   borrow.delete()
-  return redirect(reverse('show'))
+  return redirect(reverse('borrows-show'))

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<button onclick="location.href='/books/new'">agregar</button>
+  <table>
+    <tr>
+    <th>title</th>
+    <th>description</th>
+    <th>author</th>
+    <th>release date</th>
+    <th>pages</th>
+
+    </tr>
+    {% for book in books %}        
+      <tr>
+        <td>{{book.title}}</td>
+        <td>{{book.description}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.release_date}}</td>
+        <td>{{book.pages}}</td>
+        <td><button id="{{book.id}}" onclick="location.href='/books/{{book.id}}/edit'">actualizar</button></td>
+        <td><button id="{{book.id}}" onclick="location.href='/books/{{book.id}}/delete'">eliminar</button></td>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% endblock content %}

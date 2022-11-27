@@ -19,4 +19,8 @@ urlpatterns = [
   path('products/new', products_new, name="products-create"),
   path('products/<int:id>/delete', products_delete,name='products-detail'),
   path('products/<int:id>/edit', products_edit,name='products-edit'),
+  path('orders', orders, name="orders-show"),
+  path('orders/new', orders_new, name="orders-create"),
+  path('orders/<int:id>/delete', orders_delete,name='orders-detail'),
+  path('orders/<int:id>/edit', orders_edit,name='orders-edit'),
 ]

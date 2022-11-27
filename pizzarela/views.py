@@ -111,3 +111,62 @@ def products_delete(request, id):
   product = Product.objects.get(id=id)
   product.delete()
   return redirect(reverse('products-show'))
+
+def orders(request):
+  if request.method == 'POST':
+    form = create_order(request.POST)
+    if form.is_valid():
+
+      form.save()
+      return redirect('orders-show')
+    else:
+      context = {
+        'errors':form.errors,
+        'categories': Category.objects.all()
+      }
+      return render(request, 'orders/create_order.html', context)
+
+  orders = Order.objects.all()
+  template = 'orders/show_order.html'
+  context = {
+    'orders':orders,
+  }
+
+  return render(request, template, context)
+
+def orders_new(request):
+  products = Product.objects.all()
+  template = 'orders/create_order.html'
+  context = {
+    'products': products
+  }
+
+  return render(request, template, context)
+
+def orders_edit(request, id):
+  order = Order.objects.get(id=id)
+  if request.method=='POST':
+      form = create_order(request.POST or None, instance=order)
+      if form.is_valid():
+        form.save()
+        return redirect('orders-show')
+      else:
+        context = {
+          'order': order,
+          'errors':form.errors,
+          'categories': Category.objects.all()
+        }
+        return render(request, 'orders/update_order.html', context)
+  
+  template = 'orders/update_order.html'
+  categories = Category.objects.all()
+  context = {
+    'order':order,
+    'categories':categories
+  }
+  return render(request, template, context)
+
+def orders_delete(request, id):
+  order = Order.objects.get(id=id)
+  order.delete()
+  return redirect(reverse('orders-show'))

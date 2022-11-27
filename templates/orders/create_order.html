@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+  <form action="/orders" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if errors %}
+      {{errors}}
+    {% endif %}
+
+    <div id="order-items">
+      <div id="order-item">
+        <div>
+          <label for="id_product">Productos</label>
+          <select name="id_product" id="id_product" required>
+            <option value selected>Selecciona un producto</option>
+            {% for product in products %}
+            <option value="{{product.id}}">{{product.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <label for="id_quantity">Cantidad</label>
+          <input type="number" name="quantity" id="id_quantity" min=0 required>
+        </div>
+      </div>
+    </div>
+    <button type="button" onclick="addForm()"> Agregar producto </button>
+    <button type="submit" class="btn btn-primary">Aceptar</button>
+
+  </form>
+  <script>
+    const addForm = () => {
+      father = document.getElementById('order-items');
+      cloneChild = document.getElementById('order-item').cloneNode(true)
+      father.appendChild(cloneChild)
+    }
+  </script>
+{% endblock content %}

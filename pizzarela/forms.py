@@ -23,4 +23,8 @@ class create_product(forms.ModelForm):
   class Meta:
     model = Product
     fields= ['id','name','price', 'stock', 'category']
-    widgets = { 'category': CategorySelect }
+
+class create_order(forms.ModelForm):
+  class Meta:
+    model = OrderItem
+    fields= ['id','quantity','product','order']

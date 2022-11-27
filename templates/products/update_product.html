@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+  <form action="/products/{{product.id}}/edit" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% if errors %}
+      {{errors}}
+    {% endif %}
+    <div>
+      <label for="id_name">Name</label>
+      <input type="text" name="name" id="id_name" maxlength="50" value="{{product.name}}" required>
+    </div>
+
+    <div>
+      <label for="id_price">Price</label>
+      <input type="number" name="price" id="id_price" step="0.1" value="{{product.price}}" required>
+    </div>
+
+    <div>
+      <label for="id_stock">Stock</label>
+      <input type="number" name="stock" id="id_stock" value="{{product.stock}}" required>
+    </div>
+
+    <div>
+      <label for="id_categoty">Name</label>
+      <select name="category" id="id_categoty" required>
+        <option value>Selecciona categoria</option>
+        {% for category in categories %}
+          {% if category.id == product.category.id %}
+            <option value="{{category.id}}" selected>{{category.name}}</option>
+          {% else %}
+            <option value="{{category.id}}">{{category.name}}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+        
+    <button type="submit" class="btn btn-primary">Aceptar</button>
+
+  </form> 
+{% endblock content %}

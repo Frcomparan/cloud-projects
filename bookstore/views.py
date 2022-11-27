@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Book
+from .models import *
 from .forms import *
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django import forms 
@@ -18,10 +18,10 @@ def books(request):
       form.save()
       return redirect('books-show')
     else:
-      return render(request, 'create_book.html', { 'form':form })
+      return render(request, 'books/create_book.html', { 'form':form })
 
   books = Book.objects.all()
-  template = 'show_book.html'
+  template = 'books/show_book.html'
   context = {
     'books':books,
   }
@@ -30,7 +30,7 @@ def books(request):
 
 def books_new(request):
   form = create_book
-  template = 'create_book.html'
+  template = 'books/create_book.html'
   context = {
     'form':form,
   }
@@ -46,7 +46,7 @@ def books_edit(request, id):
         return redirect('books-show')
   
   form = create_book(instance=book)
-  template = 'update_book.html'
+  template = 'books/update_book.html'
   context = {
     'book':book,
     'form':form,
@@ -66,10 +66,10 @@ def borrows(request):
       form.save()
       return redirect('borrows-show')
     else:
-      return render(request, 'create_borrow.html', { 'form':form })
+      return render(request, 'borrows/create_borrow.html', { 'form':form })
 
   borrows = Borrow.objects.all()
-  template = 'show_borrow.html'
+  template = 'borrows/show_borrow.html'
   context = {
     'borrows':borrows,
   }
@@ -80,7 +80,7 @@ def borrows_new(request):
   borrows_books = Borrow.objects.filter(is_returned=False)
   borrows_books_ids = [ book.book_id.id for book in borrows_books ]
   books = Book.objects.exclude(pk__in=borrows_books_ids)
-  template = 'create_borrow.html'
+  template = 'borrows/create_borrow.html'
   context = {
     'books':books,
   }
@@ -96,7 +96,7 @@ def borrows_edit(request, id):
         return redirect('borrows-show')
   
   form = update_borrow(instance=borrow)
-  template = 'update_borrow.html'
+  template = 'borrows/update_borrow.html'
   context = {
     'borrow':borrow,
     'form':form,

@@ -5,7 +5,7 @@
     {{ form.as_p }}
     <p>
       <label for="id_book_id">Selecciona un libro</label> 
-      <select name="book_id" id="id_book_id">
+      <select name="book_id" id="id_book_id" required>
         <option value selected>Selecciona un libro</option>
         {% for book in books %}        
           <option value="{{book.id}}">{{book.title}}</option>

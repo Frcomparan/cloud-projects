@@ -15,8 +15,8 @@ urlpatterns = [
   path('books/new', books_new, name="books-create"),
   path('books/<int:id>/delete', books_delete,name='books-detail'),
   path('books/<int:id>/edit', books_edit,name='books-edit'),
-  # path('borrows', borrows, name="show"),
-  # path('borrows/new', borrows_new, name="borrows-create"),
-  # path('borrows/<int:id>/delete', borrows_delete,name='borrows-detail'),
-  # path('borrows/<int:id>/edit', borrows_edit,name='borrows-edit'),
+  path('borrows', borrows, name="show"),
+  path('borrows/new', borrows_new, name="borrows-create"),
+  path('borrows/<int:id>/delete', borrows_delete,name='borrows-detail'),
+  path('borrows/<int:id>/edit', borrows_edit,name='borrows-edit'),
 ]

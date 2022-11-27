@@ -1,0 +1,92 @@
+[
+  {
+    "model": "bookstore.book", 
+    "pk": 6, "fields": {
+      "title": "Harry Potter", 
+      "description": "Some default description for this beatiful book", 
+      "author": "J.K. Rowling ", 
+      "release_date": "2022-11-08", 
+      "pages": 500
+    }
+  },
+  {
+    "model": "bookstore.book", 
+    "pk": 7, "fields": {
+      "title": "Lord of the Rings", 
+      "description": "Some default description for this beatiful book", 
+      "author": "J. R. R. Tolkien", 
+      "release_date": "2022-11-08", 
+      "pages": 213
+    }
+  },
+  {
+    "model": "bookstore.book", 
+    "pk": 8, "fields": {
+      "title": "Game of Thrones", 
+      "description": "Some default description for this beatiful book", 
+      "author": "Gorge R.R. Martin", 
+      "release_date": "2022-11-08", 
+      "pages": 213
+    }
+  },
+  {
+    "model": "bookstore.book", 
+    "pk": 9, "fields": {
+      "title": "Fire and Blood", 
+      "description": "Some default description for this beatiful book", 
+      "author": "Gorge R.R. Martin", 
+      "release_date": "2022-11-08", 
+      "pages": 213
+    }
+  },
+  {
+    "model": "bookstore.book", 
+    "pk": 3, "fields": {
+      "title": "Life 3.0", 
+      "description": "Some default description for this beatiful book", 
+      "author": "Max Tegmark", 
+      "release_date": "2022-11-08", 
+      "pages": 213
+    }
+  },
+  {
+    "model": "bookstore.book", 
+    "pk": 10, "fields": {
+      "title": "It", 
+      "description": "Some default description for this beatiful book", 
+      "author": "Stephen King", 
+      "release_date": "2022-11-08", 
+      "pages": 213
+    }
+  },
+  {
+    "model": "bookstore.book", 
+    "pk": 11, "fields": {
+      "title": "Pet Sematary", 
+      "description": "Some default description for this beatiful book", 
+      "author": "Stephen King", 
+      "release_date": "2022-11-08", 
+      "pages": 213
+    }
+  },
+  {
+    "model": "bookstore.book", 
+    "pk": 12, "fields": {
+      "title": "The Shining", 
+      "description": "Some default description for this beatiful book", 
+      "author": "Stephen King", 
+      "release_date": "2022-11-08", 
+      "pages": 213
+    }
+  },
+  {
+    "model": "bookstore.book", 
+    "pk": 13, "fields": {
+      "title": "The Outsider", 
+      "description": "Some default description for this beatiful book", 
+      "author": "Stephen King", 
+      "release_date": "2022-11-08", 
+      "pages": 213
+    }
+  }
+]

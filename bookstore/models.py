@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
-from datetime import datetime, date, timedelta
-
+from datetime import timedelta
+from django.utils.timezone import now
 
 # Create your models here.
 class Book(models.Model):
@@ -12,7 +12,7 @@ class Book(models.Model):
   pages = models.IntegerField()
 
 class Borrow(models.Model):
-  start_time = models.DateField(default=(date.today()))
-  end_time = models.DateField(default=(date.today() + timedelta(days=5)))
+  start_time = models.DateField(default=(now()), null=False)
+  end_time = models.DateField(default=(now() + timedelta(days=5)), null=False)
   book_id = models.ForeignKey('Book', on_delete=models.CASCADE)
-  is_returned = models.BooleanField()
+  is_returned = models.BooleanField(default=False)

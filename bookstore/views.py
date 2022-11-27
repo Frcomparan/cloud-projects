@@ -58,50 +58,52 @@ def books_delete(request, id):
   book.delete()
   return redirect(reverse('show'))
 
-# def borrows(request):
-#   if request.method == 'POST':
-#     form = create_borrow(request.POST)
-#     if form.is_valid():
+def borrows(request):
+  if request.method == 'POST':
+    form = create_borrow(request.POST)
+    if form.is_valid():
 
-#       form.save()
-#       return redirect('show_borrow')
-#     else:
-#       return render(request, 'create_borrow.html', { 'form':form })
+      form.save()
+      return redirect('show')
+    else:
+      return render(request, 'create_borrow.html', { 'form':form })
 
-#   borrows = Borrow.objects.all()
-#   template = 'show_borrow.html'
-#   context = {
-#     'borrows':borrows,
-#   }
+  borrows = Borrow.objects.all()
+  template = 'show_borrow.html'
+  context = {
+    'borrows':borrows,
+  }
 
-#   return render(request, template, context)
+  return render(request, template, context)
 
-# def borrows_new(request):
-#   form = create_borrow
-#   template = 'create_borrow.html'
-#   context = {
-#     'form':form,
-#   }
+def borrows_new(request):
+  borrows_books = Borrow.objects.filter(is_returned=False)
+  borrows_books_ids = [ book.book_id.id for book in borrows_books ]
+  books = Book.objects.exclude(pk__in=borrows_books_ids)
+  template = 'create_borrow.html'
+  context = {
+    'books':books,
+  }
 
-#   return render(request, template, context)
+  return render(request, template, context)
 
-# def borrows_edit(request, id):
-#   borrow = Borrow.objects.get(id=id)
-#   if request.method=='POST':
-#       form = create_borrow(request.POST or None, instance=borrow)
-#       if form.is_valid():
-#         form.save()
-#         return redirect('show_borrow')
+def borrows_edit(request, id):
+  borrow = Borrow.objects.get(id=id)
+  if request.method=='POST':
+      form = update_borrow(request.POST or None, instance=borrow)
+      if form.is_valid():
+        form.save()
+        return redirect('show')
   
-#   form = create_borrow(instance=borrow)
-#   template = 'update_borrow.html'
-#   context = {
-#     'borrow':borrow,
-#     'form':form,
-#   }
-#   return render(request, template, context)
+  form = update_borrow(instance=borrow)
+  template = 'update_borrow.html'
+  context = {
+    'borrow':borrow,
+    'form':form,
+  }
+  return render(request, template, context)
 
-# def borrows_delete(request, id):
-#   borrow = Borrow.objects.get(id=id)
-#   borrow.delete()
-#   return redirect(reverse('show_borrow'))
+def borrows_delete(request, id):
+  borrow = Borrow.objects.get(id=id)
+  borrow.delete()
+  return redirect(reverse('show'))

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<button onclick="location.href='/borrows/new'">agregar</button>
+  <table>
+    <tr>
+    <th>start date</th>
+    <th>end date</th>
+    <th>book_id</th>
+    <th>is_returned</th>
+
+    </tr>
+    {% for borrow in borrows %}        
+      <tr>
+        <td>{{borrow.start_time}}</td>
+        <td>{{borrow.end_time}}</td>
+        <td>{{borrow.book_id.title}}</td>
+        <td>{{borrow.is_returned}}</td>
+        <td><button id="{{borrow.id}}" onclick="location.href='/borrows/{{borrow.id}}/edit'">actualizar</button></td>
+        <td><button id="{{borrow.id}}" onclick="location.href='/borrows/{{borrow.id}}/delete'">eliminar</button></td>
+      </tr>
+    {% endfor %}
+  </table>
+
+{% endblock content %}

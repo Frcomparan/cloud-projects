@@ -18,3 +18,8 @@ class create_borrow(forms.ModelForm):
   class Meta:
     model = Borrow
     fields= ['id','book_id']
+
+class update_borrow(forms.ModelForm):
+  class Meta:
+    model = Borrow
+    fields= ['id','is_returned']

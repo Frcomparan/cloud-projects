@@ -28,3 +28,8 @@ class create_order(forms.ModelForm):
   class Meta:
     model = OrderItem
     fields= ['id','quantity','product','order']
+
+class update_order(forms.ModelForm):
+  class Meta:
+    model = Order
+    fields = ['id', 'total']

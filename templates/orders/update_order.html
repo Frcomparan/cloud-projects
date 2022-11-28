@@ -16,9 +16,9 @@
               <option value selected>Selecciona un producto</option>
               {% for product in products %}
                 {% if orderItem.product.id == product.id %}
-                  <option value="{{product.id}}" selected>{{product.name}}</option>
+                  <option value="{{product.id}}" selected>{{product.name}} - ${{product.price}} </option>
                 {% else %}
-                  <option value="{{product.id}}">{{product.name}}</option>
+                  <option value="{{product.id}}">{{product.name}} - ${{product.price}} </option>
                 {% endif %}
               {% endfor %}
             </select>

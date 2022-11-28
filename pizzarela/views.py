@@ -123,6 +123,7 @@ def orders(request):
         form.save()
       else:
         return render(request, 'orders/create_order.html', { 'errors': 'Occurrio un error al realizar la compra' })
+    set_total_order(order)
 
     return redirect('orders-show')
 
@@ -152,6 +153,7 @@ def orders_edit(request, id):
     'products': products,
     'id':id,
   }
+
   if request.method=='POST':
     ids, products, quantities = get_update_date(request)
     orderItems.exclude(pk__in=ids).delete()
@@ -163,17 +165,29 @@ def orders_edit(request, id):
       else:
         context['errors'] = 'Ocurrio un error'
         return render(request, template, context)
+        
+    set_total_order(Order.objects.get(id=id))
     return redirect('orders-show')  
-  return render(request, template, context)
 
+  return render(request, template, context)
 
 def orders_delete(request, id):
   order = Order.objects.get(id=id)
   order.delete()
   return redirect(reverse('orders-show'))
 
+# Helper methods
 def get_update_date(request):
   ids = request.POST.getlist("id")
   products = request.POST.getlist("product")
   quantities = request.POST.getlist("quantity")
   return ids, products, quantities
+
+def set_total_order(order):
+  order_items = OrderItem.objects.filter(order=order.id)
+  total = 0
+  for order_item in order_items:
+    total += order_item.product.price * order_item.quantity
+  form = update_order({'total':total} or None, instance=order)
+  if form.is_valid():
+    form.save()

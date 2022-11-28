@@ -31,6 +31,7 @@
   <script>
     const child = document.getElementById('order-item')
     const cloneChild = child.cloneNode(true)
+    
     const addForm = () => {
       const father = document.getElementById('order-items');
       const clone = cloneChild.cloneNode(true)
@@ -39,15 +40,6 @@
 
     const deleteForm = event => {
       console.log(event.target.parentElement.remove())
-    }
-
-    const updateTotalPrice = (event) => {
-      const parent = event.target.parentElement
-      const grandParent = parent.parentElement
-      const price = grandParent.querySelector('#product_price')
-      const total_element = document.getElementById('total')
-      total_price = parseFloat(total_element.innerText)
-      total_element.innerText = (total_price += parseFloat(price.innerText))
     }
   </script>
 {% endblock content %}

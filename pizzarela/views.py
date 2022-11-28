@@ -114,75 +114,66 @@ def products_delete(request, id):
 
 def orders(request):
   if request.method == 'POST':
-    print(f'\n\n\n\n {request.POST} \n\n\n\n')
-    for i in range(0,len(request.POST['order'])):
-      print(i)
-      form = create_order(request.POST['quantity'][i], request.POST['product'][i], request.POST['order'] )
-      print(request.POST['product'][i], request.POST['quantity'][i],f'\n\n\n\n  \n\n\n')
-
+    order = Order.objects.create()
+    products = request.POST.getlist("product")
+    quantities = request.POST.getlist("quantity")
+    for product, quantity in zip(products, quantities):
+      form = create_order({ 'order':order, 'product':product, 'quantity':quantity })
       if form.is_valid():
         form.save()
-    return redirect('orders-show')      
-    # else:
-    #   context = {
-    #     'errors':form.errors,
-    #     'categories': Category.objects.all()
-    #   }
-    #   return render(request, 'orders/create_order.html', context)
+      else:
+        return render(request, 'orders/create_order.html', { 'errors': 'Occurrio un error al realizar la compra' })
+
+    return redirect('orders-show')
 
   orders = Order.objects.all()
-  order_items = OrderItem.objects.all()
   template = 'orders/show_order.html'
   context = {
-    'order_items': order_items,
     'orders':orders,
   }
 
   return render(request, template, context)
 
 def orders_new(request):
-  # <QueryDict: 
-  # {
-  #   'csrfmiddlewaretoken': ['UqGMDqv9QejtUea0xx6WFTzyj8Zn3e9prYh87SMLShGbrl83zQNLSMCGlr5JDjgs'], 
-  #   'id_product': ['2', '2', '3', '3'], 
-  #   'quantity': ['2', '2', '2', '2']
-  # }
-  print(f'\n\n\n\n\n\n {request.POST} \n\n\n\n\n\n')
-  order = Order.objects.create()
-  print(f'\n\n\n\n\n\n {order} \n\n\n\n\n\n')
   products = Product.objects.all()
   template = 'orders/create_order.html'
   context = {
-    'order':order,
     'products': products,
   }
 
   return render(request, template, context)
 
 def orders_edit(request, id):
-  order = Order.objects.get(id=id)
+  orderItems = OrderItem.objects.filter(order=id)
+  products = Product.objects.all()
+  template = 'orders/update_order.html'
+  context = {
+    'orderItems':orderItems,
+    'products': products,
+    'id':id,
+  }
   if request.method=='POST':
-      form = create_order(request.POST or None, instance=order)
+    ids, products, quantities = get_update_date(request)
+    orderItems.exclude(pk__in=ids).delete()
+    for item_id, product, quantity in zip(ids, products, quantities):
+      orderItem = OrderItem.objects.get(id=item_id)
+      form = create_order({'order':id, 'product':product, 'quantity':quantity } or None, instance=orderItem)
       if form.is_valid():
         form.save()
-        return redirect('orders-show')
       else:
-        context = {
-          'order': order,
-          'errors':form.errors,
-          'categories': Category.objects.all()
-        }
-        return render(request, 'orders/update_order.html', context)
-  
-  template = 'orders/update_order.html'
-  categories = Category.objects.all()
-  context = {
-    'order':order,
-    'categories':categories
-  }
+        context['errors'] = 'Ocurrio un error'
+        return render(request, template, context)
+    return redirect('orders-show')  
   return render(request, template, context)
+
 
 def orders_delete(request, id):
   order = Order.objects.get(id=id)
   order.delete()
   return redirect(reverse('orders-show'))
+
+def get_update_date(request):
+  ids = request.POST.getlist("id")
+  products = request.POST.getlist("product")
+  quantities = request.POST.getlist("quantity")
+  return ids, products, quantities

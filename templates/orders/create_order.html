@@ -8,7 +8,6 @@
 
     <div id="order-items">
       <div id="order-item">
-        <input type="hidden" name="order" id="id_order" value="{{order.id}}">
         <div>
           <label for="id_product">Productos</label>
           <select name="product" id="id_product" required>
@@ -31,10 +30,11 @@
   </form>
   <script>
     const child = document.getElementById('order-item')
+    const cloneChild = child.cloneNode(true)
     const addForm = () => {
       const father = document.getElementById('order-items');
-      const cloneChild = child.cloneNode(true)
-      father.appendChild(cloneChild)
+      const clone = cloneChild.cloneNode(true)
+      father.appendChild(clone)
     }
 
     const deleteForm = event => {

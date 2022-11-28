@@ -2,6 +2,20 @@
   {
     "model": "pizzarela.category", 
     "fields": {
+      "name": "Default", 
+      "description": "Bebidas disponibles"
+    }
+  },
+  {
+    "model": "pizzarela.category", 
+    "fields": {
+      "name": "Pizzas", 
+      "description": "Bebidas disponibles"
+    }
+  },
+  {
+    "model": "pizzarela.category", 
+    "fields": {
       "name": "Bebidas", 
       "description": "Bebidas disponibles"
     }

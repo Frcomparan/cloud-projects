@@ -1,0 +1,117 @@
+[
+  {
+    "model": "bakery.category", 
+    "fields": {
+      "name": "Default", 
+      "description": "Some default description"
+    }
+  },
+  {
+    "model": "bakery.category", 
+    "fields": {
+      "name": "Pasteles basicos", 
+      "description": "Some default description"
+    }
+  },
+  {
+    "model": "bakery.category", 
+    "fields": {
+      "name": "Pasteles personalizados", 
+      "description": "Some default description"
+    }
+  },
+  {
+    "model": "bakery.category", 
+    "fields": {
+      "name": "Pasteles formales", 
+      "description": "Some default description"
+    }
+  },
+  {
+    "model": "bakery.category", 
+    "fields": {
+      "name": "Complementos", 
+      "description": "Some default description"
+    }
+  },
+  {
+    "model": "bakery.cake", 
+    "fields": {
+      "name": "Pastel de 3 leches 1k", 
+      "price": "120.000",
+      "category": 2
+    }
+  },
+  {
+    "model": "bakery.cake", 
+    "fields": {
+      "name": "Pastel chocolate 1k", 
+      "price": "200.000",
+      "category": 2
+    }
+  },
+  {
+    "model": "bakery.cake", 
+    "fields": {
+      "name": "Pastel cajeta 1k", 
+      "price": "180.000",
+      "category": 2
+    }
+  },
+  {
+    "model": "bakery.cake", 
+    "fields": {
+      "name": "Pastel de boda 1k", 
+      "price": "200.000",
+      "category": 2
+    }
+  },
+  {
+    "model": "bakery.cake", 
+    "fields": {
+      "name": "Pastel de zanahoria 1k", 
+      "price": "12.000",
+      "category": 3
+    }
+  },
+  {
+    "model": "bakery.cake", 
+    "fields": {
+      "name": "Pastel de vainilla 1k", 
+      "price": "25.000",
+      "category": 3
+    }
+  },
+  {
+    "model": "bakery.cake", 
+    "fields": {
+      "name": "Pastel Red Velvet 1k", 
+      "price": "18.000",
+      "category": 3
+    }
+  },
+  {
+    "model": "bakery.cake", 
+    "fields": {
+      "name": "Pastel X1 1k", 
+      "price": "18.000",
+      "category": 5
+    }
+  },
+  {
+    "model": "bakery.cake", 
+    "fields": {
+      "name": "Pastel X2 1k", 
+      "price": "10.000",
+      "category": 5
+    }
+  },
+  {
+    "model": "bakery.cake", 
+    "fields": {
+      "name": "Pastel X3 1k", 
+      "price": "10.000",
+      "category": 5
+    }
+  }
+]

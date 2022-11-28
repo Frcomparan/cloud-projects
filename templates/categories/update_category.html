@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <form action="/categories/{{category.id}}/edit" method="post" enctype="multipart/form-data">
+  <form action="/pizzarela/categories/{{category.id}}/edit" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
         

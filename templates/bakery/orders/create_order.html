@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <form action="/pizzarela/orders" method="post" enctype="multipart/form-data">
+  <form action="/bakery/orders" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% if errors %}
       {{errors}}
@@ -9,11 +9,11 @@
     <div id="order-items">
       <div id="order-item">
         <div>
-          <label for="id_product">Productos</label>
-          <select name="product" id="id_product" required>
-            <option value selected>Selecciona un producto</option>
-            {% for product in products %}
-            <option value="{{product.id}}">{{product.name}} - ${{product.price}}</option>
+          <label for="id_cake">Pastel</label>
+          <select name="cake" id="id_cake" required>
+            <option value selected>Selecciona un pastel</option>
+            {% for cake in cakes %}
+            <option value="{{cake.id}}">{{cake.name}} - ${{cake.price}}</option>
             {% endfor %}
           </select>
         </div>
@@ -24,7 +24,7 @@
         <button type="button" onclick="deleteForm(event)">eliminar</button>
       </div>
     </div>
-    <button type="button" onclick="addForm()"> Agregar producto </button>
+    <button type="button" onclick="addForm()"> Agregar pastel </button>
     <button type="submit" class="btn btn-primary">Aceptar</button>
 
   </form>

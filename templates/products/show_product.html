@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<button onclick="location.href='/products/new'">agregar</button>
+<button onclick="location.href='/pizzarela/products/new'">agregar</button>
   <table>
     <tr>
     <th>name</th>
@@ -22,8 +22,8 @@
           {% endif %}
         </td>
         <td>{{product.category.name}}</td>
-        <td><button id="{{product.id}}" onclick="location.href='/products/{{product.id}}/edit'">actualizar</button></td>
-        <td><button id="{{product.id}}" onclick="location.href='/products/{{product.id}}/delete'">eliminar</button></td>
+        <td><button id="{{product.id}}" onclick="location.href='/pizzarela/products/{{product.id}}/edit'">actualizar</button></td>
+        <td><button id="{{product.id}}" onclick="location.href='/pizzarela/products/{{product.id}}/delete'">eliminar</button></td>
       </tr>
     {% endfor %}
   </table>

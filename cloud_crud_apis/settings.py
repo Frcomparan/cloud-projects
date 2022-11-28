@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bookstore',
     'pizzarela',
+    'bakery',
 ]
 
 MIDDLEWARE = [

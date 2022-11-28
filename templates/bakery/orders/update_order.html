@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-  <form action="/pizzarela/orders/{{id}}/edit" method="post" enctype="multipart/form-data">
+  <form action="/bakery/orders/{{id}}/edit" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% if errors %}
       {{errors}}
@@ -11,14 +11,14 @@
         <div id="order-item">
           <input type="hidden" name="id" value="{{orderItem.id}}">
           <div>
-            <label for="id_product">Productos</label>
-            <select name="product" id="id_product" required>
-              <option value selected>Selecciona un producto</option>
-              {% for product in products %}
-                {% if orderItem.product.id == product.id %}
-                  <option value="{{product.id}}" selected>{{product.name}} - ${{product.price}} </option>
+            <label for="id_cake">Pasteles</label>
+            <select name="cake" id="id_cake" required>
+              <option value selected>Selecciona un pastel</option>
+              {% for cake in cakes %}
+                {% if orderItem.cake.id == cake.id %}
+                  <option value="{{cake.id}}" selected>{{cake.name}} - ${{cake.price}} </option>
                 {% else %}
-                  <option value="{{product.id}}">{{product.name}} - ${{product.price}} </option>
+                  <option value="{{cake.id}}">{{cake.name}} - ${{cake.price}} </option>
                 {% endif %}
               {% endfor %}
             </select>

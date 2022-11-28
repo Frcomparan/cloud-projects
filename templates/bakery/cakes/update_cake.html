@@ -1,23 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-  <form action="/pizzarela/products/{{product.id}}/edit" method="post" enctype="multipart/form-data">
+  <form action="/bakery/cakes/{{cake.id}}/edit" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% if errors %}
       {{errors}}
     {% endif %}
     <div>
       <label for="id_name">Name</label>
-      <input type="text" name="name" id="id_name" maxlength="50" value="{{product.name}}" required>
+      <input type="text" name="name" id="id_name" maxlength="50" value="{{cake.name}}" required>
     </div>
 
     <div>
       <label for="id_price">Price</label>
-      <input type="number" name="price" id="id_price" step="0.1" value="{{product.price}}" required>
-    </div>
-
-    <div>
-      <label for="id_stock">Stock (deje en blanco si no aplica)</label>
-      <input type="number" name="stock" id="id_stock" value="{{product.stock}}" required>
+      <input type="number" name="price" id="id_price" step="0.1" value="{{cake.price}}" required>
     </div>
 
     <div>
@@ -25,7 +20,7 @@
       <select name="category" id="id_categoty" required>
         <option value>Selecciona categoria</option>
         {% for category in categories %}
-          {% if category.id == product.category.id %}
+          {% if category.id == cake.category.id %}
             <option value="{{category.id}}" selected>{{category.name}}</option>
           {% else %}
             <option value="{{category.id}}">{{category.name}}</option>

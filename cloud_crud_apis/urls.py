@@ -26,4 +26,5 @@ urlpatterns = [
   path('admin/', admin.site.urls),
   url(r'^', include('bookstore.urls')),
   url(r'^', include('pizzarela.urls')),
+  url(r'^', include('bakery.urls')),
 ]

@@ -6,16 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block title %}<title>Servicios en la nube</title> {% endblock title %}
-    <style>
-    </style>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
   </head>
   <body>
-    <header></header>
-    <main>
-      {% block content %}
-      {% endblock content%}
+    <main class="home">
+      <div class="bakery-side">
+        <a href="/bakery">Ir a Bakery</a>
+      </div>
+      <div class="pizzarela-side">
+        <a href="/pizzarela">Ir a Pizzarela</a>
+      </div>
     </main>
-
+    {% block content %}
+    {% endblock content%}
     <script type="text/javascript">
     </script>
     {% block js %}

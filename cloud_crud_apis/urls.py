@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import *
 import re
 from django.views.static import serve
 from django.conf.urls.static import static
@@ -24,6 +25,7 @@ from django.conf.urls import url, include
 
 urlpatterns = [
   path('admin/', admin.site.urls),
+  url(r'^$', home, name = 'home'),
   url(r'^', include('bookstore.urls')),
   url(r'^', include('pizzarela.urls')),
   url(r'^', include('bakery.urls')),

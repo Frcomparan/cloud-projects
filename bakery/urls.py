@@ -11,6 +11,7 @@ from .views import *
 
 
 urlpatterns = [
+  path('bakery', home, name='home'),
   path('bakery/categories', categories, name="categories-show"),
   path('bakery/categories/new', categories_new, name="categories-create"),
   path('bakery/categories/<int:id>/delete', categories_delete,name='categories-detail'),

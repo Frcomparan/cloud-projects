@@ -4,6 +4,9 @@ from .forms import *
 from django.urls import reverse
 from django.shortcuts import redirect
 
+def home(request):
+  template = 'bakery/home.html'
+  return render(request, template)
 
 def categories(request):
   if request.method == 'POST':

@@ -1,0 +1,75 @@
+html {
+  font-size: 62.5%;
+}
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+
+/* HOME STYLES */
+
+main {
+  min-height: 100vh;
+  display: flex;
+}
+
+.bakery-side, .pizzarela-side {
+  width: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.bakery-side a, .pizzarela-side a, .pages-options a {
+  display: grid;
+  place-items: center;
+  width: 40%;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.801);
+  color: white;
+  font-size: 2rem;
+  border-radius: 20px;
+}
+
+.bakery-side {
+  background-image: url('http://www.eclairbakery.com/wp-content/uploads/2021/10/shutterstock_176646242.jpg');
+}
+
+.pizzarela-side {
+  background-image: url('https://pibespizza.com.mx/wp-content/uploads/2021/08/Portada.jpg');
+}
+
+nav {
+ background: rgba(255, 255, 255, 0.418);
+ width: 100%;
+ position: absolute;
+ top: 0;
+ height: 50px;
+ font-size: 2rem;
+ display: flex;
+ align-items: center;
+ gap: 20px;
+ padding-left: 40px;
+}
+nav a {
+ color: black;
+ font-weight: bolder;
+}
+
+.pages-options {
+  width: 50%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.pages-options a {
+  background-color: rgba(255, 255, 255, 0.418);
+}
+
+

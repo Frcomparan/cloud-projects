@@ -5,6 +5,10 @@ from django.urls import reverse
 from django.shortcuts import redirect
 
 # Create your views here.
+def home(request):
+  template = 'pizzarela_home.html'
+  return render(request, template)
+
 def categories(request):
   if request.method == 'POST':
     form = create_category(request.POST)

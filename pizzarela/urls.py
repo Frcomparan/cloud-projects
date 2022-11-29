@@ -11,6 +11,7 @@ from .views import *
 
 
 urlpatterns = [
+  path('pizzarela', home, name='home'),
   path('pizzarela/categories', categories, name="categories-show"),
   path('pizzarela/categories/new', categories_new, name="categories-create"),
   path('pizzarela/categories/<int:id>/delete', categories_delete,name='categories-detail'),

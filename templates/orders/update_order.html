@@ -1,43 +1,67 @@
-{% block content %}
-  <form action="/pizzarela/orders/{{id}}/edit" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% if errors %}
-      {{errors}}
-    {% endif %}
-
-    <div id="order-items">
-      {% for orderItem in orderItems %}
-        <div id="order-item">
-          <input type="hidden" name="id" value="{{orderItem.id}}">
-          <div>
-            <label for="id_product">Productos</label>
-            <select name="product" id="id_product" required>
-              <option value selected>Selecciona un producto</option>
-              {% for product in products %}
-                {% if orderItem.product.id == product.id %}
-                  <option value="{{product.id}}" selected>{{product.name}} - ${{product.price}} </option>
-                {% else %}
-                  <option value="{{product.id}}">{{product.name}} - ${{product.price}} </option>
-                {% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizzarela</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/bakery">Bakery</a>
+    <a href="/pizzarela">Pizzarela</a>
+  </nav>
+  <main>
+    <section class="bakery-side">
+    </section>
+    <section class="pages-content">
+      {% block content %}
+        <form action="/pizzarela/orders/{{id}}/edit" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% if errors %}
+            {{errors}}
+          {% endif %}
+      
+          <div id="order-items">
+            {% for orderItem in orderItems %}
+              <div id="order-item">
+                <input type="hidden" name="id" value="{{orderItem.id}}">
+                <div>
+                  <label for="id_product">Productos</label>
+                  <select name="product" id="id_product" required>
+                    <option value selected>Selecciona un producto</option>
+                    {% for product in products %}
+                      {% if orderItem.product.id == product.id %}
+                        <option value="{{product.id}}" selected>{{product.name}} - ${{product.price}} </option>
+                      {% else %}
+                        <option value="{{product.id}}">{{product.name}} - ${{product.price}} </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+                <div>
+                  <label for="id_quantity">Cantidad</label>
+                  <input type="number" name="quantity" value="{{orderItem.quantity}}" id="id_quantity" min=0 required>
+                </div>
+                <button type="button" onclick="deleteForm(event)">eliminar</button>
+              </div>
               {% endfor %}
-            </select>
           </div>
-          <div>
-            <label for="id_quantity">Cantidad</label>
-            <input type="number" name="quantity" value="{{orderItem.quantity}}" id="id_quantity" min=0 required>
-          </div>
-          <button type="button" onclick="deleteForm(event)">eliminar</button>
-        </div>
-        {% endfor %}
-    </div>
-    <button type="submit" class="btn btn-primary">Aceptar</button>
-
-  </form>
-  <script>
-    const deleteForm = event => {
-      const parent = event.target.parentElement;
-      parent.remove();
-    }
-  </script>
-
-{% endblock content %}
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+      
+        </form>
+        <script>
+          const deleteForm = event => {
+            const parent = event.target.parentElement;
+            parent.remove();
+          }
+        </script>
+      
+      {% endblock content %}
+    </section>
+  </main>
+</body>
+</html>

@@ -1,43 +1,66 @@
-{% block content %}
-  <form action="/bakery/orders/{{id}}/edit" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% if errors %}
-      {{errors}}
-    {% endif %}
-
-    <div id="order-items">
-      {% for orderItem in orderItems %}
-        <div id="order-item">
-          <input type="hidden" name="id" value="{{orderItem.id}}">
-          <div>
-            <label for="id_cake">Pasteles</label>
-            <select name="cake" id="id_cake" required>
-              <option value selected>Selecciona un pastel</option>
-              {% for cake in cakes %}
-                {% if orderItem.cake.id == cake.id %}
-                  <option value="{{cake.id}}" selected>{{cake.name}} - ${{cake.price}} </option>
-                {% else %}
-                  <option value="{{cake.id}}">{{cake.name}} - ${{cake.price}} </option>
-                {% endif %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakery</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/bakery">Bakery</a>
+    <a href="/pizzarela">Pizzarela</a>
+  </nav>
+  <main>
+    <section class="bakery-side">
+    </section>
+    <section class="pages-content">
+      {% block content %}
+        <form action="/bakery/orders/{{id}}/edit" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% if errors %}
+            {{errors}}
+          {% endif %}
+      
+          <div id="order-items">
+            {% for orderItem in orderItems %}
+              <div id="order-item">
+                <input type="hidden" name="id" value="{{orderItem.id}}">
+                <div>
+                  <label for="id_cake">Pasteles</label>
+                  <select name="cake" id="id_cake" required>
+                    <option value selected>Selecciona un pastel</option>
+                    {% for cake in cakes %}
+                      {% if orderItem.cake.id == cake.id %}
+                        <option value="{{cake.id}}" selected>{{cake.name}} - ${{cake.price}} </option>
+                      {% else %}
+                        <option value="{{cake.id}}">{{cake.name}} - ${{cake.price}} </option>
+                      {% endif %}
+                    {% endfor %}
+                  </select>
+                </div>
+                <div>
+                  <label for="id_quantity">Cantidad</label>
+                  <input type="number" name="quantity" value="{{orderItem.quantity}}" id="id_quantity" min=0 required>
+                </div>
+                <button type="button" onclick="deleteForm(event)">eliminar</button>
+              </div>
               {% endfor %}
-            </select>
           </div>
-          <div>
-            <label for="id_quantity">Cantidad</label>
-            <input type="number" name="quantity" value="{{orderItem.quantity}}" id="id_quantity" min=0 required>
-          </div>
-          <button type="button" onclick="deleteForm(event)">eliminar</button>
-        </div>
-        {% endfor %}
-    </div>
-    <button type="submit" class="btn btn-primary">Aceptar</button>
-
-  </form>
-  <script>
-    const deleteForm = event => {
-      const parent = event.target.parentElement;
-      parent.remove();
-    }
-  </script>
-
-{% endblock content %}
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+      
+        </form>
+        <script>
+          const deleteForm = event => {
+            const parent = event.target.parentElement;
+            parent.remove();
+          }
+        </script>
+      
+      {% endblock content %}
+    </section>
+  </main>
+</body>
+</html>

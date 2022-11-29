@@ -1,20 +1,44 @@
-{% block content %}
-
-<button onclick="location.href='/pizzarela/categories/new'">agregar</button>
-  <table>
-    <tr>
-    <th>name</th>
-    <th>description</th>
-
-    </tr>
-    {% for category in categories %}        
-      <tr>
-        <td>{{category.name}}</td>
-        <td>{{category.description}}</td>
-        <td><button id="{{category.id}}" onclick="location.href='/pizzarela/categories/{{category.id}}/edit'">actualizar</button></td>
-        <td><button id="{{category.id}}" onclick="location.href='/pizzarela/categories/{{category.id}}/delete'">eliminar</button></td>
-      </tr>
-    {% endfor %}
-  </table>
-
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakery</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/bakery">Bakery</a>
+    <a href="/pizzarela">Pizzarela</a>
+  </nav>
+  <main>
+    <section class="pizzarela-side">
+    </section>
+    <section class="pages-content">
+      {% block content %}
+      
+      <button onclick="location.href='/pizzarela/categories/new'">agregar</button>
+        <table>
+          <tr>
+          <th>name</th>
+          <th>description</th>
+      
+          </tr>
+          {% for category in categories %}        
+            <tr>
+              <td>{{category.name}}</td>
+              <td>{{category.description}}</td>
+              <td><button id="{{category.id}}" onclick="location.href='/pizzarela/categories/{{category.id}}/edit'">actualizar</button></td>
+              <td><button id="{{category.id}}" onclick="location.href='/pizzarela/categories/{{category.id}}/delete'">eliminar</button></td>
+            </tr>
+          {% endfor %}
+        </table>
+      
+      {% endblock content %}
+    </section>
+  </main>
+</body>
+</html>

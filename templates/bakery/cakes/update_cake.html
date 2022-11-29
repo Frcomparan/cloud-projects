@@ -1,34 +1,57 @@
-{% block content %}
-  <form action="/bakery/cakes/{{cake.id}}/edit" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {% if errors %}
-      {{errors}}
-    {% endif %}
-    <div>
-      <label for="id_name">Name</label>
-      <input type="text" name="name" id="id_name" maxlength="50" value="{{cake.name}}" required>
-    </div>
-
-    <div>
-      <label for="id_price">Price</label>
-      <input type="number" name="price" id="id_price" step="0.1" value="{{cake.price}}" required>
-    </div>
-
-    <div>
-      <label for="id_categoty">Name</label>
-      <select name="category" id="id_categoty" required>
-        <option value>Selecciona categoria</option>
-        {% for category in categories %}
-          {% if category.id == cake.category.id %}
-            <option value="{{category.id}}" selected>{{category.name}}</option>
-          {% else %}
-            <option value="{{category.id}}">{{category.name}}</option>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bakery</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/bakery">Bakery</a>
+    <a href="/pizzarela">Pizzarela</a>
+  </nav>
+  <main>
+    <section class="bakery-side">
+    </section>
+    <section class="pages-content">
+      {% block content %}
+        <form action="/bakery/cakes/{{cake.id}}/edit" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% if errors %}
+            {{errors}}
           {% endif %}
-        {% endfor %}
-      </select>
-    </div>
-        
-    <button type="submit" class="btn btn-primary">Aceptar</button>
-
-  </form> 
-{% endblock content %}
+          <div>
+            <label for="id_name">Name</label>
+            <input type="text" name="name" id="id_name" maxlength="50" value="{{cake.name}}" required>
+          </div>
+      
+          <div>
+            <label for="id_price">Price</label>
+            <input type="number" name="price" id="id_price" step="0.1" value="{{cake.price}}" required>
+          </div>
+      
+          <div>
+            <label for="id_categoty">Name</label>
+            <select name="category" id="id_categoty" required>
+              <option value>Selecciona categoria</option>
+              {% for category in categories %}
+                {% if category.id == cake.category.id %}
+                  <option value="{{category.id}}" selected>{{category.name}}</option>
+                {% else %}
+                  <option value="{{category.id}}">{{category.name}}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+              
+          <button type="submit" class="btn btn-primary">Aceptar</button>
+      
+        </form> 
+      {% endblock content %}
+    </section>
+  </main>
+</body>
+</html>

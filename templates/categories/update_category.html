@@ -3,12 +3,14 @@
   <section class="bakery-side">
   </section>
   <section class="pages-content">
-      <form action="/pizzarela/categories/{{category.id}}/edit" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-            
-        <button type="submit" class="btn btn-primary">Aceptar</button>
-    
-      </form>
+    <h1>Actualizar categoría</h1>
+    <form action="/pizzarela/categories/{{category.id}}/edit" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Aceptar</button>
+    </form>
+    <div class="link-container">
+      <a href="/pizzarela/categories">Volver</a>
+    </div>
   </section>
 {% endblock content %}

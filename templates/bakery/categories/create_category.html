@@ -3,12 +3,14 @@
   <section class="bakery-side">
   </section>
   <section class="pages-content">
+    <h1>Crear categoría</h1>
     <form action="/bakery/categories" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
-          
       <button type="submit" class="btn btn-primary">Aceptar</button>
-    
     </form>
+    <div class="link-container">
+      <a href="/bakery/categories">Volver</a>
+    </div>
   </section>
 {% endblock content %}

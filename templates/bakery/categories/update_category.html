@@ -3,12 +3,14 @@
   <section class="bakery-side">
   </section>
   <section class="pages-content">
-      <form action="/bakery/categories/{{category.id}}/edit" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-            
-        <button type="submit" class="btn btn-primary">Aceptar</button>
-    
-      </form>
+    <h1>Editar categoría</h1>
+    <form action="/bakery/categories/{{category.id}}/edit" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Aceptar</button>
+    </form>
+    <div class="link-container">
+      <a href="/bakery/categories">Volver</a>
+    </div>
   </section>
 {% endblock content %}

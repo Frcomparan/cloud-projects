@@ -11,10 +11,10 @@
           <h3>{{category.name}}</h3>
           <p>- {{category.description}}</p>
         </a>
-        <button id="{{category.id}}" onclick="location.href='/pizzarela/categories/{{category.id}}/delete'">Eliminar</button>
+        <button id="{{category.id}}" onclick="location.href='/pizzarela/categories/{{category.id}}/delete'"><strong>Eliminar</strong></button>
       </div>     
       {% endfor %}
-      <button onclick="location.href='/pizzarela/categories/new'">Agregar</button>
+      <button onclick="location.href='/pizzarela/categories/new'"><strong>Agregar</strong></button>
     </div>
   </section>
 {% endblock content %}

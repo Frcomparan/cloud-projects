@@ -43,7 +43,7 @@ main {
 
 nav {
  background: rgba(255, 255, 255, 0.418);
- width: 100%;
+ width: 50%;
  position: absolute;
  top: 0;
  height: 50px;
@@ -72,19 +72,23 @@ nav a {
   align-items: center;
   flex-direction: column;
   gap: 30px;
+  padding: 0 2.5%;
+  max-height: 100vh;
+  overflow-y: scroll;
 }
 
 .pages-content {
   justify-content: flex-start;
-  padding-top: 60px;
+  padding: 25px 2.5%;
 }
 
 .pages-options a {
   background-color: rgba(255, 255, 255, 0.418);
+  font-size: 2.5rem;
 }
 
 .model-container {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -113,7 +117,7 @@ nav a {
   width: 78%;
 }
 
-.category a:hover, .category button:hover, .model-container > button:hover {
+.category a:hover, .category button:hover, .model-container > button:hover, form button:hover {
   cursor: pointer;
   transform: scale(1.03);
 }
@@ -127,8 +131,66 @@ nav a {
 }
 
 .pages-content h1 {
-  width: 90%;
+  width: 100%;
   color: white;
   font-size: 3rem;
   text-align: left;
 }
+
+.link-container {
+  width: 100%;
+}
+
+.link-container a {
+  font-size: 1.7rem;
+  color: white;
+  text-align: left;
+}
+
+.link-container a:hover {
+  text-decoration: underline;
+  transform: scale(1.03);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+form p {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 2rem;
+  gap: 4px;
+}
+
+form p label {
+  width: 100%;
+  color: white;
+}
+
+form p input {
+  font-size: 1.7rem;
+  border-radius: 4px;
+  width: 100%;
+  border: none;
+  padding: 6px;
+  outline: 0;
+}
+
+form p input:focus {
+  border: 2px solid blue;
+}
+
+form button {
+  border-radius: 4px;
+  font-size: 2rem;
+  width: 70%;
+  padding: 10px;
+  border: none;
+}
+

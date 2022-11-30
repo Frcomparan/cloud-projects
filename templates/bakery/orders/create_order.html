@@ -6,12 +6,13 @@
     <form action="/bakery/orders" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {% if errors %}
-        {{errors}}
+        <ul>
+          {{errors}}
+        </ul>
       {% endif %}
-  
-      <div id="order-items">
-        <div id="order-item">
-          <div>
+      <div class="order-items" id="order-items">
+        <div class="order-item" id="order-item">
+          <p>
             <label for="id_cake">Pastel</label>
             <select name="cake" id="id_cake" required>
               <option value selected>Selecciona un pastel</option>
@@ -19,18 +20,20 @@
               <option value="{{cake.id}}">{{cake.name}} - ${{cake.price}}</option>
               {% endfor %}
             </select>
-          </div>
-          <div>
+          </p>
+          <p>
             <label for="id_quantity">Cantidad</label>
-            <input type="number" name="quantity" id="id_quantity" min=0 required>
-          </div>
-          <button type="button" onclick="deleteForm(event)">eliminar</button>
+            <input type="number" name="quantity" id="id_quantity" min="1" required>
+          </p>
+          <button type="button" onclick="deleteForm(event)">Eliminar</button>
         </div>
       </div>
-      <button type="button" onclick="addForm()"> Agregar pastel </button>
+      <button type="button" onclick="addForm()" class="add-item"> Agregar pastel </button>
       <button type="submit" class="btn btn-primary">Aceptar</button>
-  
     </form>
+    <div class="link-container">
+      <a href="/bakery/orders">Volver</a>
+    </div>
     <script>
       const child = document.getElementById('order-item')
       const cloneChild = child.cloneNode(true)

@@ -15,7 +15,7 @@ def categories(request):
     if form.is_valid():
 
       form.save()
-      return redirect('categories-show')
+      return redirect('pizzarela-categories-show')
     else:
       return render(request, 'categories/create_category.html', { 'form':form })
 
@@ -42,7 +42,7 @@ def categories_edit(request, id):
       form = create_category(request.POST or None, instance=category)
       if form.is_valid():
         form.save()
-        return redirect('categories-show')
+        return redirect('pizzarela-categories-show')
   
   form = create_category(instance=category)
   template = 'categories/update_category.html'
@@ -55,7 +55,7 @@ def categories_edit(request, id):
 def categories_delete(request, id):
   category = Category.objects.get(id=id)
   category.delete()
-  return redirect(reverse('categories-show'))
+  return redirect(reverse('pizzarela-categories-show'))
 
 def products(request):
   if request.method == 'POST':
@@ -129,7 +129,7 @@ def orders(request):
         return render(request, 'orders/create_order.html', { 'errors': 'Occurrio un error al realizar la compra' })
     set_total_order(order)
 
-    return redirect('orders-show')
+    return redirect('pizzarela-orders-show')
 
   orders = Order.objects.all()
   template = 'orders/show_order.html'
@@ -171,14 +171,14 @@ def orders_edit(request, id):
         return render(request, template, context)
         
     set_total_order(Order.objects.get(id=id))
-    return redirect('orders-show')  
+    return redirect('pizzarela-orders-show')  
 
   return render(request, template, context)
 
 def orders_delete(request, id):
   order = Order.objects.get(id=id)
   order.delete()
-  return redirect(reverse('orders-show'))
+  return redirect(reverse('pizzarela-orders-show'))
 
 # Helper methods
 def get_update_date(request):

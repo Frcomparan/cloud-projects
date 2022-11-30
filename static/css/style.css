@@ -206,3 +206,29 @@ ul {
 ul li {
   color: white;
 }
+
+form .order-items, form .order-item {
+  width: 100%;
+}
+
+.order-item {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: baseline;
+}
+
+.order-item button {
+  font-weight: bolder;
+  font-size: 1rem;
+  width: 20%;
+  background-color: rgb(241, 79, 79);
+}
+
+.add-item {
+  font-weight: bold;
+  background-color: rgb(84, 241, 79);
+  font-size: 1.2rem;
+  width: 30%;
+  margin-bottom: 20px;
+}

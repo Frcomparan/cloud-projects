@@ -9,11 +9,11 @@
         {{errors}}
       {% endif %}
   
-      <div id="order-items">
+      <div class="order-items" id="order-items">
         {% for orderItem in orderItems %}
-          <div id="order-item">
+          <div class="order-item" id="order-item">
             <input type="hidden" name="id" value="{{orderItem.id}}">
-            <div>
+            <p>
               <label for="id_product">Productos</label>
               <select name="product" id="id_product" required>
                 <option value selected>Selecciona un producto</option>
@@ -25,11 +25,11 @@
                   {% endif %}
                 {% endfor %}
               </select>
-            </div>
-            <div>
+            </p>
+            <p>
               <label for="id_quantity">Cantidad</label>
-              <input type="number" name="quantity" value="{{orderItem.quantity}}" id="id_quantity" min=0 required>
-            </div>
+              <input type="number" name="quantity" value="{{orderItem.quantity}}" id="id_quantity" min="0" required>
+            </p>
             <button type="button" onclick="deleteForm(event)">eliminar</button>
           </div>
           {% endfor %}
@@ -37,6 +37,9 @@
       <button type="submit" class="btn btn-primary">Aceptar</button>
   
     </form>
+    <div class="link-container">
+      <a href="/pizzarela/orders">Volver</a>
+    </div>
     <script>
       const deleteForm = event => {
         const parent = event.target.parentElement;

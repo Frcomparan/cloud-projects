@@ -9,9 +9,9 @@
         {{errors}}
       {% endif %}
   
-      <div id="order-items">
-        <div id="order-item">
-          <div>
+      <div class="order-items" id="order-items">
+        <div class="order-item" id="order-item">
+          <p>
             <label for="id_product">Productos</label>
             <select name="product" id="id_product" required>
               <option value selected>Selecciona un producto</option>
@@ -19,18 +19,21 @@
               <option value="{{product.id}}">{{product.name}} - ${{product.price}}</option>
               {% endfor %}
             </select>
-          </div>
-          <div>
+          </p>
+          <p>
             <label for="id_quantity">Cantidad</label>
-            <input type="number" name="quantity" id="id_quantity" min=0 required>
-          </div>
-          <button type="button" onclick="deleteForm(event)">eliminar</button>
+            <input type="number" name="quantity" id="id_quantity" min="0" required>
+          </p>
+          <button type="button" onclick="deleteForm(event)">Eliminar</button>
         </div>
       </div>
-      <button type="button" onclick="addForm()"> Agregar producto </button>
+      <button type="button" onclick="addForm()" class="add-item"> Agregar producto </button>
       <button type="submit" class="btn btn-primary">Aceptar</button>
   
     </form>
+    <div class="link-container">
+      <a href="/pizzarela/orders">Volver</a>
+    </div>
     <script>
       const child = document.getElementById('order-item')
       const cloneChild = child.cloneNode(true)

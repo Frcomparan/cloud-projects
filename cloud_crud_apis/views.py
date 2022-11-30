@@ -6,6 +6,6 @@ from django.views.generic import TemplateView
 from django.contrib.auth import authenticate, login, logout
 
 def home(request):
-  template = 'base.html'
+  template = 'home.html'
   return render(request, template)
 

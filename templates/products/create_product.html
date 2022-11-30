@@ -1,59 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pizzarela</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/bakery">Bakery</a>
-    <a href="/pizzarela">Pizzarela</a>
-  </nav>
-  <main>
-    <section class="bakery-side">
-    </section>
-    <section class="pages-content">
-      {% block content %}
-        <form action="/pizzarela/products" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {% if errors %}
-            {{errors}}
-          {% endif %}
-          <div>
-            <label for="id_name">Name</label>
-            <input type="text" name="name" id="id_name" maxlength="50" required>
-          </div>
-      
-          <div>
-            <label for="id_price">Price</label>
-            <input type="number" name="price" id="id_price" step="0.1" required>
-          </div>
-      
-          <div>
-            <label for="id_stock">Stock (deje en blanco si no aplica)</label>
-            <input type="number" name="stock" id="id_stock" required>
-          </div>
-      
-          <div>
-            <label for="id_categoty">Name</label>
-            <select name="category" id="id_categoty" required>
-              <option value selected>Selecciona categoria</option>
-              {% for category in categories %}
-                <option value="{{category.id}}">{{category.name}}</option>
-              {% endfor %}
-            </select>
-          </div>
-              
-          <button type="submit" class="btn btn-primary">Aceptar</button>
-      
-        </form>
-      {% endblock content %}
-    </section>
-  </main>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+  <section class="bakery-side">
+  </section>
+  <section class="pages-content">
+    <form action="/pizzarela/products" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% if errors %}
+        {{errors}}
+      {% endif %}
+      <div>
+        <label for="id_name">Name</label>
+        <input type="text" name="name" id="id_name" maxlength="50" required>
+      </div>
+  
+      <div>
+        <label for="id_price">Price</label>
+        <input type="number" name="price" id="id_price" step="0.1" required>
+      </div>
+  
+      <div>
+        <label for="id_stock">Stock (deje en blanco si no aplica)</label>
+        <input type="number" name="stock" id="id_stock" required>
+      </div>
+  
+      <div>
+        <label for="id_categoty">Name</label>
+        <select name="category" id="id_categoty" required>
+          <option value selected>Selecciona categoria</option>
+          {% for category in categories %}
+            <option value="{{category.id}}">{{category.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+          
+      <button type="submit" class="btn btn-primary">Aceptar</button>
+  
+    </form>
+  </section>
+{% endblock content %}

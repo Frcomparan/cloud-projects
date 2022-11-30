@@ -1,37 +1,20 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bakery</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/bakery">Bakery</a>
-    <a href="/pizzarela">Pizzarela</a>
-  </nav>
-  <main>
-    <section class="bakery-side">
-    </section>
-    <section class="pages-content">
-      {% block content %}
-      <div class="model-container">
-        {% for category in categories %}
-        <div class="category">
-          <a href="/bakery/categories/{{category.id}}/edit">
-            <h3>{{category.name}}</h3>
-            <p>{{category.description}}</p>
-          </a>
-          <button id="{{category.id}}" onclick="location.href='/bakery/categories/{{category.id}}/delete'">eliminar</button>
-        </div>
-        {% endfor %}
-        <button onclick="location.href='/bakery/categories/new'">agregar</button>
+{% extends "base.html" %}
+{% block content %}
+  <section class="bakery-side">
+  </section>
+  <section class="pages-content">
+    <h1>Categorias</h1>
+    <div class="model-container">
+      {% for category in categories %}
+      <div class="category">
+        <a href="/bakery/categories/{{category.id}}/edit">
+          <h3>{{category.name}}</h3>
+          <p>{{category.description}}</p>
+        </a>
+        <button id="{{category.id}}" onclick="location.href='/bakery/categories/{{category.id}}/delete'"><strong>Eliminar</strong></button>
       </div>
-      {% endblock content %}
-    </section>
-  </main>
-</body>
-</html>
+      {% endfor %}
+      <button onclick="location.href='/bakery/categories/new'"><strong>Agregar</strong></button>
+    </div>
+  </section>
+{% endblock content %}

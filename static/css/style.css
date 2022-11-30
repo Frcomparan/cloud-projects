@@ -16,9 +16,10 @@ main {
 }
 
 .bakery-side, .pizzarela-side {
-  width: 50%;
+  width: 100%;
   display: grid;
   place-items: center;
+  background-size: cover;
 }
 
 .bakery-side a, .pizzarela-side a, .pages-options a {
@@ -33,11 +34,11 @@ main {
 }
 
 .bakery-side {
-  background-image: url('http://www.eclairbakery.com/wp-content/uploads/2021/10/shutterstock_176646242.jpg');
+  background-image: url('https://wallpaper.dog/large/20509896.jpg');
 }
 
 .pizzarela-side {
-  background-image: url('https://pibespizza.com.mx/wp-content/uploads/2021/08/Portada.jpg');
+  background-image: url('https://img.freepik.com/premium-photo/concept-promotional-flyer-poster-restaurants-pizzerias-template-with-delicious-pizza-olive-tomato-mozzarella-cheese_70216-8210.jpg?w=2000');
 }
 
 nav {
@@ -51,6 +52,7 @@ nav {
  align-items: center;
  gap: 20px;
  padding-left: 40px;
+ z-index: 3;
 }
 
 nav a {
@@ -59,8 +61,12 @@ nav a {
 }
 
 .pages-options, .pages-content {
+  top: 0;
+  right: 0;
+  position: absolute;
   width: 50%;
-  background-color: black;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.767);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,8 +76,7 @@ nav a {
 
 .pages-content {
   justify-content: flex-start;
-  margin-top: 60px;
-  background-color: rgb(255, 255, 255);
+  padding-top: 60px;
 }
 
 .pages-options a {
@@ -86,8 +91,9 @@ nav a {
 }
 
 .model-container > button {
-  padding: 8px 0;
-  border-radius: 10px;
+  font-size: 1.4rem;
+  padding: 12px 0;
+  border-radius: 8px;
   border: none;
   background-color: rgb(84, 241, 79);
 }
@@ -99,26 +105,30 @@ nav a {
 }
 
 .category a {
+  font-size: 1.4rem;
   color: black;
   padding: 10px;
-  background-color: darkgray;
-  border-radius: 12px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
   width: 78%;
 }
 
-.category a:hover {
+.category a:hover, .category button:hover, .model-container > button:hover {
   cursor: pointer;
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .category button {
   width: 18%;
-  border-radius: 10px;
+  font-size: 1.4rem;
+  border-radius: 8px;
   border: none;
   background-color: rgb(241, 79, 79);
 }
 
-.category button:hover {
-  cursor: pointer;
-  transform: scale(1.05);
+.pages-content h1 {
+  width: 90%;
+  color: white;
+  font-size: 3rem;
+  text-align: left;
 }

@@ -1,50 +1,32 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bakery</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/bakery">Bakery</a>
-    <a href="/pizzarela">Pizzarela</a>
-  </nav>
-  <main>
-    <section class="bakery-side">
-    </section>
-    <section class="pages-content">
-      {% block content %}
-      
-      <button onclick="location.href='/bakery/orders/new'">agregar</button>
-        <table>
+{% extends "base.html" %}
+{% block content %}
+  <section class="bakery-side">
+  </section>
+  <section class="pages-content">
+    
+    <button onclick="location.href='/bakery/orders/new'">agregar</button>
+      <table>
+        <tr>
+        <th>Total</th>
+        <th>Fecha de expedición</th>
+    
+        </tr>
+        {% for order in orders %}        
           <tr>
-          <th>Total</th>
-          <th>Fecha de expedición</th>
-      
+            <td>{{order.total}}</td>
+            <td>{{order.created_at}}</td>
+            <td><button id="{{order.id}}" onclick="location.href='/bakery/orders/{{order.id}}/edit'">actualizar</button></td>
+            <td><button id="{{order.id}}" onclick="location.href='/bakery/orders/{{order.id}}/delete'">eliminar</button></td>
           </tr>
-          {% for order in orders %}        
-            <tr>
-              <td>{{order.total}}</td>
-              <td>{{order.created_at}}</td>
-              <td><button id="{{order.id}}" onclick="location.href='/bakery/orders/{{order.id}}/edit'">actualizar</button></td>
-              <td><button id="{{order.id}}" onclick="location.href='/bakery/orders/{{order.id}}/delete'">eliminar</button></td>
-            </tr>
-          {% endfor %}
-          {% for item in order_items %}       
-            <p>{{item.order.id}}</p>
-            <p>{{item.product.name}}</p>
-            <p>{{item.quantity}}</p>
-          {% endfor %}
-      
-      
-        </table>
-      
-      {% endblock content %}
-    </section>
-  </main>
-</body>
-</html>
+        {% endfor %}
+        {% for item in order_items %}       
+          <p>{{item.order.id}}</p>
+          <p>{{item.product.name}}</p>
+          <p>{{item.quantity}}</p>
+        {% endfor %}
+    
+    
+      </table>
+    
+  </section>
+{% endblock content %}

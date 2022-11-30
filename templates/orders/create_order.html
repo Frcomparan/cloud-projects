@@ -1,68 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pizzarela</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/bakery">Bakery</a>
-    <a href="/pizzarela">Pizzarela</a>
-  </nav>
-  <main>
-    <section class="bakery-side">
-    </section>
-    <section class="pages-content">
-      {% block content %}
-        <form action="/pizzarela/orders" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {% if errors %}
-            {{errors}}
-          {% endif %}
-      
-          <div id="order-items">
-            <div id="order-item">
-              <div>
-                <label for="id_product">Productos</label>
-                <select name="product" id="id_product" required>
-                  <option value selected>Selecciona un producto</option>
-                  {% for product in products %}
-                  <option value="{{product.id}}">{{product.name}} - ${{product.price}}</option>
-                  {% endfor %}
-                </select>
-              </div>
-              <div>
-                <label for="id_quantity">Cantidad</label>
-                <input type="number" name="quantity" id="id_quantity" min=0 required>
-              </div>
-              <button type="button" onclick="deleteForm(event)">eliminar</button>
-            </div>
+{% extends "base.html" %}
+{% block content %}
+  <section class="bakery-side">
+  </section>
+  <section class="pages-content">
+    <form action="/pizzarela/orders" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% if errors %}
+        {{errors}}
+      {% endif %}
+  
+      <div id="order-items">
+        <div id="order-item">
+          <div>
+            <label for="id_product">Productos</label>
+            <select name="product" id="id_product" required>
+              <option value selected>Selecciona un producto</option>
+              {% for product in products %}
+              <option value="{{product.id}}">{{product.name}} - ${{product.price}}</option>
+              {% endfor %}
+            </select>
           </div>
-          <button type="button" onclick="addForm()"> Agregar producto </button>
-          <button type="submit" class="btn btn-primary">Aceptar</button>
+          <div>
+            <label for="id_quantity">Cantidad</label>
+            <input type="number" name="quantity" id="id_quantity" min=0 required>
+          </div>
+          <button type="button" onclick="deleteForm(event)">eliminar</button>
+        </div>
+      </div>
+      <button type="button" onclick="addForm()"> Agregar producto </button>
+      <button type="submit" class="btn btn-primary">Aceptar</button>
+  
+    </form>
+    <script>
+      const child = document.getElementById('order-item')
+      const cloneChild = child.cloneNode(true)
       
-        </form>
-        <script>
-          const child = document.getElementById('order-item')
-          const cloneChild = child.cloneNode(true)
-          
-          const addForm = () => {
-            const father = document.getElementById('order-items');
-            const clone = cloneChild.cloneNode(true)
-            father.appendChild(clone)
-          }
-      
-          const deleteForm = event => {
-            console.log(event.target.parentElement.remove())
-          }
-        </script>
-      {% endblock content %}
-    </section>
-  </main>
-</body>
-</html>
+      const addForm = () => {
+        const father = document.getElementById('order-items');
+        const clone = cloneChild.cloneNode(true)
+        father.appendChild(clone)
+      }
+  
+      const deleteForm = event => {
+        console.log(event.target.parentElement.remove())
+      }
+    </script>
+  </section>
+{% endblock content %}

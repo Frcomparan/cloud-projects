@@ -1,54 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pizzarela</title>
-  {% load static %}
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-</head>
-<body>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/bakery">Bakery</a>
-    <a href="/pizzarela">Pizzarela</a>
-  </nav>
-  <main>
-    <section class="bakery-side">
-    </section>
-    <section class="pages-content">
-      {% block content %}
-      
-      <button onclick="location.href='/pizzarela/products/new'">agregar</button>
-        <table>
-          <tr>
-          <th>name</th>
-          <th>price</th>
-          <th>stock</th>
-          <th>category</th>
-      
-          </tr>
-          {% for product in products %}        
-            <tr>
-              <td>{{product.name}}</td>
-              <td>{{product.price}}</td>
-              <td>
-                {% if product.stock %}
-                  {{product.stock}} 
-                {% else %}
-                  No aplica
-                {% endif %}
-              </td>
-              <td>{{product.category.name}}</td>
-              <td><button id="{{product.id}}" onclick="location.href='/pizzarela/products/{{product.id}}/edit'">actualizar</button></td>
-              <td><button id="{{product.id}}" onclick="location.href='/pizzarela/products/{{product.id}}/delete'">eliminar</button></td>
-            </tr>
-          {% endfor %}
-        </table>
-      
-      {% endblock content %}
-    </section>
-  </main>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+  <section class="bakery-side">
+  </section>
+  <section class="pages-content">
+    
+    <button onclick="location.href='/pizzarela/products/new'">agregar</button>
+    <table>
+      <tr>
+      <th>name</th>
+      <th>price</th>
+      <th>stock</th>
+      <th>category</th>
+  
+      </tr>
+      {% for product in products %}        
+        <tr>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+          <td>
+            {% if product.stock %}
+              {{product.stock}} 
+            {% else %}
+              No aplica
+            {% endif %}
+          </td>
+          <td>{{product.category.name}}</td>
+          <td><button id="{{product.id}}" onclick="location.href='/pizzarela/products/{{product.id}}/edit'">actualizar</button></td>
+          <td><button id="{{product.id}}" onclick="location.href='/pizzarela/products/{{product.id}}/delete'">eliminar</button></td>
+        </tr>
+      {% endfor %}
+    </table>
+    
+  </section>
+{% endblock content %}

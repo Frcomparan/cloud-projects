@@ -3,23 +3,22 @@
   <section class="bakery-side">
   </section>
   <section class="pages-content">
+    <h1>Actualizar pastel</h1>
     <form action="/bakery/cakes/{{cake.id}}/edit" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {% if errors %}
         {{errors}}
       {% endif %}
-      <div>
-        <label for="id_name">Name</label>
+      <p>
+        <label for="id_name">Nombre</label>
         <input type="text" name="name" id="id_name" maxlength="50" value="{{cake.name}}" required>
-      </div>
-  
-      <div>
-        <label for="id_price">Price</label>
-        <input type="number" name="price" id="id_price" step="0.1" value="{{cake.price}}" required>
-      </div>
-  
-      <div>
-        <label for="id_categoty">Name</label>
+      </p>
+      <p>
+        <label for="id_price">Precio</label>
+        <input type="number" name="price" id="id_price" step="0.1" min="0.1" value="{{cake.price}}" required>
+      </p>
+      <p>
+        <label for="id_categoty">Categoria</label>
         <select name="category" id="id_categoty" required>
           <option value>Selecciona categoria</option>
           {% for category in categories %}
@@ -30,10 +29,11 @@
             {% endif %}
           {% endfor %}
         </select>
-      </div>
-          
+      </p> 
       <button type="submit" class="btn btn-primary">Aceptar</button>
-  
     </form> 
+    <div class="link-container">
+      <a href="/bakery/cakes">Volver</a>
+    </div>
   </section>
 {% endblock content %}

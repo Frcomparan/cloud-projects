@@ -4,32 +4,27 @@
   </section>
   <section class="pages-content">
     
-    <button onclick="location.href='/pizzarela/products/new'">agregar</button>
-    <table>
-      <tr>
-      <th>name</th>
-      <th>price</th>
-      <th>stock</th>
-      <th>category</th>
-  
-      </tr>
-      {% for product in products %}        
-        <tr>
-          <td>{{product.name}}</td>
-          <td>{{product.price}}</td>
-          <td>
+    <h1>Productos</h1>
+    <div class="model-container">
+      {% for product in products %}
+      <div class="category product">
+        <a href="/pizzarela/products/{{product.id}}/edit">
+          <h3>{{product.name}}</h3>
+          <p><strong>Categoria --</strong> {{product.category.name}}</p>
+          <p>
+            <strong>Stock --</strong>
             {% if product.stock %}
               {{product.stock}} 
             {% else %}
               No aplica
             {% endif %}
-          </td>
-          <td>{{product.category.name}}</td>
-          <td><button id="{{product.id}}" onclick="location.href='/pizzarela/products/{{product.id}}/edit'">actualizar</button></td>
-          <td><button id="{{product.id}}" onclick="location.href='/pizzarela/products/{{product.id}}/delete'">eliminar</button></td>
-        </tr>
+          </p>
+          <p><strong>${{product.price}}</strong></p>
+        </a>
+        <button id="{{product.id}}" onclick="location.href='/pizzarela/products/{{product.id}}/delete'"><strong>Eliminar</strong></button>
+      </div>
       {% endfor %}
-    </table>
-    
+      <button onclick="location.href='/pizzarela/products/new'"><strong>Agregar</strong></button>
+    </div>
   </section>
 {% endblock content %}

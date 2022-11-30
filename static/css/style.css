@@ -173,7 +173,7 @@ form p label {
   color: white;
 }
 
-form p input {
+form p input,  form p select {
   font-size: 1.7rem;
   border-radius: 4px;
   width: 100%;
@@ -194,3 +194,15 @@ form button {
   border: none;
 }
 
+ul {
+  font-size: 1.2rem;
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(240, 96, 96);
+  margin-bottom: 8px;
+}
+
+ul li {
+  color: white;
+}

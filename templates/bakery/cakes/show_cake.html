@@ -3,25 +3,19 @@
   <section class="bakery-side">
   </section>
   <section class="pages-content">
-    
-  <button onclick="location.href='/bakery/cakes/new'">agregar</button>
-    <table>
-      <tr>
-      <th>name</th>
-      <th>price</th>
-      <th>category</th>
-  
-      </tr>
-      {% for cake in cakes %}        
-        <tr>
-          <td>{{cake.name}}</td>
-          <td>{{cake.price}}</td>
-          <td>{{cake.category.name}}</td>
-          <td><button id="{{cake.id}}" onclick="location.href='/bakery/cakes/{{cake.id}}/edit'">actualizar</button></td>
-          <td><button id="{{cake.id}}" onclick="location.href='/bakery/cakes/{{cake.id}}/delete'">eliminar</button></td>
-        </tr>
+    <h1>Pasteles</h1>
+    <div class="model-container">
+      {% for cake in cakes %}
+      <div class="category cake">
+        <a href="/bakery/cakes/{{cake.id}}/edit">
+          <h3>{{cake.name}}</h3>
+          <p><strong>Categoria --</strong> {{cake.category.name}}</p>
+          <p><strong>${{cake.price}}</strong></p>
+        </a>
+        <button id="{{cake.id}}" onclick="location.href='/bakery/cakes/{{cake.id}}/delete'"><strong>Eliminar</strong></button>
+      </div>
       {% endfor %}
-    </table>
-  
+      <button onclick="location.href='/bakery/cakes/new'"><strong>Agregar</strong></button>
+    </div>
   </section>
 {% endblock content %}

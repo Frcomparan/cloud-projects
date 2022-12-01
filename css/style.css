@@ -1,0 +1,234 @@
+html {
+  font-size: 62.5%;
+}
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* HOME STYLES */
+
+main {
+  min-height: 100vh;
+  display: flex;
+}
+
+.bakery-side, .pizzarela-side {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background-size: cover;
+}
+
+.bakery-side a, .pizzarela-side a, .pages-options a {
+  display: grid;
+  place-items: center;
+  width: 40%;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.801);
+  color: white;
+  font-size: 2rem;
+  border-radius: 20px;
+}
+
+.bakery-side {
+  background-image: url('https://wallpaper.dog/large/20509896.jpg');
+}
+
+.pizzarela-side {
+  background-image: url('https://img.freepik.com/premium-photo/concept-promotional-flyer-poster-restaurants-pizzerias-template-with-delicious-pizza-olive-tomato-mozzarella-cheese_70216-8210.jpg?w=2000');
+}
+
+nav {
+ background: rgba(255, 255, 255, 0.418);
+ width: 50%;
+ position: absolute;
+ top: 0;
+ height: 50px;
+ font-size: 2rem;
+ display: flex;
+ align-items: center;
+ gap: 20px;
+ padding-left: 40px;
+ z-index: 3;
+}
+
+nav a {
+ color: black;
+ font-weight: bolder;
+}
+
+.pages-options, .pages-content {
+  top: 0;
+  right: 0;
+  position: absolute;
+  width: 50%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.767);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0 2.5%;
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+.pages-content {
+  justify-content: flex-start;
+  padding: 25px 2.5%;
+}
+
+.pages-options a {
+  background-color: rgba(255, 255, 255, 0.418);
+  font-size: 2.5rem;
+}
+
+.model-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.model-container > button {
+  font-size: 1.4rem;
+  padding: 12px 0;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(84, 241, 79);
+}
+
+.category {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.category a {
+  font-size: 1.4rem;
+  color: black;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 6px;
+  width: 78%;
+}
+
+.category a:hover, .category button:hover, .model-container > button:hover, form button:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.category button {
+  width: 18%;
+  font-size: 1.4rem;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(241, 79, 79);
+}
+
+.pages-content h1 {
+  width: 100%;
+  color: white;
+  font-size: 3rem;
+  text-align: left;
+}
+
+.link-container {
+  width: 100%;
+}
+
+.link-container a {
+  font-size: 1.7rem;
+  color: white;
+  text-align: left;
+}
+
+.link-container a:hover {
+  text-decoration: underline;
+  transform: scale(1.03);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+form p {
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 2rem;
+  gap: 4px;
+}
+
+form p label {
+  width: 100%;
+  color: white;
+}
+
+form p input,  form p select {
+  font-size: 1.7rem;
+  border-radius: 4px;
+  width: 100%;
+  border: none;
+  padding: 6px;
+  outline: 0;
+}
+
+form p input:focus {
+  border: 2px solid blue;
+}
+
+form button {
+  border-radius: 4px;
+  font-size: 2rem;
+  width: 70%;
+  padding: 10px;
+  border: none;
+}
+
+ul {
+  font-size: 1.2rem;
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(240, 96, 96);
+  margin-bottom: 8px;
+}
+
+ul li {
+  color: white;
+}
+
+form .order-items, form .order-item {
+  width: 100%;
+}
+
+.order-item {
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: baseline;
+}
+
+.order-item button {
+  font-weight: bolder;
+  font-size: 1rem;
+  width: 20%;
+  background-color: rgb(241, 79, 79);
+}
+
+.add-item {
+  font-weight: bold;
+  background-color: rgb(84, 241, 79);
+  font-size: 1.2rem;
+  width: 30%;
+  margin-bottom: 20px;
+}

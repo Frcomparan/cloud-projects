@@ -23,7 +23,7 @@
           </p>
           <p>
             <label for="id_quantity">Cantidad</label>
-            <input type="number" name="quantity" id="id_quantity" min="1" required>
+            <input type="number" name="quantity" id="id_quantity" min="1" oninvalid="this.setCustomValidity('Debe ordenar entre 1 a 100 pasteles')" max="100" required>
           </p>
           <button type="button" onclick="deleteForm(event)">Eliminar</button>
         </div>

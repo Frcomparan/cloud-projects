@@ -12,10 +12,15 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -84,10 +89,10 @@ DATABASES = {
         # 'USER': 'postgres',
         # 'PASSWORD': '1234',
         # 'HOST': 'localhost',
-        'NAME': os.environ['DBNAME'],
-        'USER': os.environ['DBUSE'],
-        'PASSWORD': os.environ['DBPASS'],
-        'HOST': os.environ['DBHOST'],
+        'NAME': env('DBNAME'),
+        'HOST': env('DBHOST'),
+        'USER': env('DBUSER'),
+        'PASSWORD': env('DBPASS'),
     }
 }
 

@@ -87,10 +87,6 @@ WSGI_APPLICATION = 'cloud_crud_apis.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'nube_db_2',
-        # 'USER': 'postgres',
-        # 'PASSWORD': '1234',
-        # 'HOST': 'localhost',
         'NAME': env('DBNAME'),
         'HOST': env('DBHOST'),
         'USER': env('DBUSER'),

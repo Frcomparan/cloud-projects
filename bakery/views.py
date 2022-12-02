@@ -126,7 +126,12 @@ def orders(request):
       if form.is_valid():
         form.save()
       else:
-        return render(request, 'bakery/orders/create_order.html', { 'errors': 'Occurrio un error al realizar la compra' })
+        products = Cake.objects.all()
+        context = {
+          'products': products,
+          'errors': form.errors
+        }
+        return render(request, 'bakery/orders/create_order.html', context)
     set_total_order(order)
 
     return redirect('orders-show')
@@ -167,7 +172,7 @@ def orders_edit(request, id):
       if form.is_valid():
         form.save()
       else:
-        context['errors'] = 'Ocurrio un error'
+        context['errors'] = form.errors
         return render(request, template, context)
         
     set_total_order(Order.objects.get(id=id))

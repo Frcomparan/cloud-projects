@@ -10,15 +10,15 @@
         {{errors}}
       {% endif %}
       <p>
-        <label for="id_name">Name</label>
+        <label for="id_name">Nombre</label>
         <input type="text" name="name" id="id_name" maxlength="50" required>
       </p>
       <p>
-        <label for="id_price">Price</label>
-        <input type="number" name="price" id="id_price" step="0.1" min="0.1" required>
+        <label for="id_price">Precio</label>
+        <input type="number" name="price" id="id_price" step="0.001" min="0.1" required>
       </p>
       <p>
-        <label for="id_categoty">Name</label>
+        <label for="id_categoty">Categoria</label>
         <select name="category" id="id_categoty" required>
           <option value selected>Selecciona categoria</option>
           {% for category in categories %}

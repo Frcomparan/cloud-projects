@@ -147,6 +147,10 @@ nav a {
   text-align: left;
 }
 
+a {
+  text-decoration: none;
+}
+
 .link-container a:hover {
   text-decoration: underline;
   transform: scale(1.03);
